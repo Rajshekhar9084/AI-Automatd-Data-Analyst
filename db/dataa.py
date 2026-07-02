@@ -11,8 +11,8 @@ def create_table():
     cursor = conn.cursor()
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS sales_data (
-    order_id VARCHAR(50),
+    CREATE TABLE IF NOT EXISTS api_data (
+    order_id VARCHAR(50) UNIQUE,
     order_date DATE,
     ship_date DATE,
     ship_mode VARCHAR(50),
@@ -33,7 +33,9 @@ def create_table():
     month INT,
     year INT,
     profit_margin DECIMAL(10,4),
-    shipping_days INT
+    shipping_days INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
 )
 """)
 
